@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Interference | Electromagnetic Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="title-section">
+                <h1>Wave Interference</h1>
+                <p class="description">Simulate electromagnetic wave interference patterns from two coherent light sources. Observe constructive and destructive interference. (like Young's double-slit experiment!)</p>
+            </div>
+            
+            <div class="control-group">
+                <h3>Light Sources</h3>
+                
+                <div class="source-controls">
+                    <div class="source-control">
+                        <div class="source-header">
+                            <div class="color-indicator" style="background-color: rgb(220, 100, 100)"></div>
+                            <div class="source-title">Source 1 (Red)</div>
+                        </div>
+                        
+                        <div class="setting">
+                            <label>
+                                <input type="checkbox" id="source1Enabled" checked>
+                                Enabled
+                            </label>
+                        </div>
+                        
+                        <div class="setting">
+                            <label for="source1X">X Position</label>
+                            <div class="slider-container">
+                                <input type="range" id="source1X" min="50" max="250" step="1" value="150">
+                                <span class="value-display" id="source1XValue">150</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting">
+                            <label for="source1Phase">Phase Shift</label>
+                            <div class="slider-container">
+                                <input type="range" id="source1Phase" min="0" max="360" step="1" value="0">
+                                <span class="value-display" id="source1PhaseValue">0°</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="source-control">
+                        <div class="source-header">
+                            <div class="color-indicator" style="background-color: rgb(100, 150, 220)"></div>
+                            <div class="source-title">Source 2 (Blue)</div>
+                        </div>
+                        
+                        <div class="setting">
+                            <label>
+                                <input type="checkbox" id="source2Enabled" checked>
+                                Enabled
+                            </label>
+                        </div>
+                        
+                        <div class="setting">
+                            <label for="source2X">X Position</label>
+                            <div class="slider-container">
+                                <input type="range" id="source2X" min="50" max="250" step="1" value="150">
+                                <span class="value-display" id="source2XValue">150</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting">
+                            <label for="source2Phase">Phase Shift</label>
+                            <div class="slider-container">
+                                <input type="range" id="source2Phase" min="0" max="360" step="1" value="180">
+                                <span class="value-display" id="source2PhaseValue">180°</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>Wave Properties</h3>
+                
+                <div class="setting">
+                    <label for="wavelength">Wavelength (λ)</label>
+                    <div class="slider-container">
+                        <input type="range" id="wavelength" min="10" max="100" step="1" value="40">
+                        <span class="value-display" id="wavelengthValue">40</span>
+                    </div>
+                </div>
+                
+                <div class="setting">
+                    <label for="amplitude">Amplitude</label>
+                    <div class="slider-container">
+                        <input type="range" id="amplitude" min="10" max="100" step="1" value="50">
+                        <span class="value-display" id="amplitudeValue">50</span>
+                    </div>
+                </div>
+                
+                <div class="setting">
+                    <label for="frequency">Frequency</label>
+                    <div class="slider-container">
+                        <input type="range" id="frequency" min="0.5" max="3.0" step="0.1" value="1.0">
+                        <span class="value-display" id="frequencyValue">1.0 Hz</span>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showIndividualWaves" checked>
+                    <label for="showIndividualWaves">Show Individual Waves</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showResultant" checked>
+                    <label for="showResultant">Show Resultant Wave</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showInterferencePattern" checked>
+                    <label for="showInterferencePattern">Show Interference Pattern</label>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button id="resetBtn" class="btn">Reset to Default</button>
+                <button id="randomizeBtn" class="btn">Randomize</button>
+            </div>
+            
+            <div class="info-box">
+                <h3>Physics Explanation</h3>
+                <p><strong>Constructive Interference:</strong> When waves are in phase (phase difference = 0°, 360°, etc.), they add together to create a larger amplitude.</p>
+                <p><strong>Destructive Interference:</strong> When waves are 180° out of phase, they cancel each other out (dark regions).</p>
+                <p>The interference pattern depends on path difference: Δx = nλ (constructive) or Δx = (n+½)λ (destructive).</p>
+            </div>
+        </div>
+        
+        <div class="simulation-area">
+            <div id="canvas-container"></div>
+        </div>
+    </div>
+</body>
+</html>
